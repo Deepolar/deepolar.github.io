@@ -5,13 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Zeshen Zhang</title>
 
+  <!-- 字体：Source Serif 4 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet">
+
+  <!-- 图标：Font Awesome + Academicons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+
   <style>
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      font-family: "Source Serif 4", Georgia, "Times New Roman", serif;
+      font-size: 17px;
       max-width: 900px;
       margin: 40px auto;
       padding: 0 20px;
-      line-height: 1.65;
+      line-height: 1.7;
       color: #222;
     }
 
@@ -28,15 +38,28 @@
       box-shadow: 0 8px 22px rgba(0,0,0,.08);
     }
 
-    h1 { margin-bottom: 6px; }
-    h2 { margin-top: 26px; }
+    /* ---------- 标题层级 ---------- */
+    h1 {
+      font-size: 2em;
+      font-weight: 700;
+      margin: 0 0 6px;
+    }
+    h2 {
+      font-size: 1.25em;
+      font-weight: 600;
+      margin: 30px 0 12px;
+      padding-bottom: 4px;
+      border-bottom: 1px solid #e3e3e3;
+    }
 
     /* ---------- 链接颜色规则 ---------- */
-    .content a { color: #1a73e8; }
+    .content a { color: #1a73e8; text-decoration: none; }
     .content a:hover { color: #174ea6; text-decoration: underline; }
 
     .sidebar a { color: #333; text-decoration: none; }
     .sidebar a:hover { text-decoration: underline; }
+
+    a:focus-visible { outline: 2px solid #1a73e8; outline-offset: 2px; }
 
     /* ---------- 左栏样式 ---------- */
     .sidebar-item { margin-top: 14px; }
@@ -58,13 +81,43 @@
       line-height: 1;
     }
 
-    .muted { color: #666; font-size: 0.95em; }
+    .meta-line {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #666;
+      font-size: 0.95em;
+    }
+
+    /* ---------- 论文条目 ---------- */
+    .pub {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      margin-bottom: 18px;
+    }
+    .venue-tag {
+      flex: 0 0 auto;
+      min-width: 96px;
+      margin-top: 3px;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: #1f3a5f;
+      color: #fff;
+      font-size: 0.78em;
+      font-weight: 600;
+      text-align: center;
+      white-space: nowrap;
+    }
+    .pub-body p { margin: 0; }
 
     /* ---------- 手机端：单栏 ---------- */
     @media (max-width: 680px) {
-      body { margin: 24px auto; }
+      body { margin: 24px auto; font-size: 16px; }
       .container { grid-template-columns: 1fr; gap: 12px; }
       img.avatar { width: 160px; }
+      .pub { flex-direction: column; gap: 6px; }
+      .venue-tag { min-width: 0; }
     }
   </style>
 </head>
@@ -77,30 +130,35 @@
     <img src="profile.jpg" class="avatar" alt="Zeshen Zhang">
 
     <div class="sidebar-item">
-      <p class="muted">
-        📍 New York, USA<br>
-        🎓 NYU Tandon School of Engineering
-      </p>
+      <div class="meta-line"><span class="icon"><i class="fa-solid fa-location-dot"></i></span> New York, USA</div>
+      <div class="meta-line"><span class="icon"><i class="fa-solid fa-graduation-cap"></i></span> NYU Tandon School of Engineering</div>
     </div>
 
+    <!-- CV 准备好后取消注释
     <div class="sidebar-item">
-      <div class="label"><span class="icon">✉️</span> Email</div>
+      <div class="label"><span class="icon"><i class="ai ai-cv"></i></span> CV</div>
+      <a href="cv.pdf">CV (PDF)</a>
+    </div>
+    -->
+
+    <div class="sidebar-item">
+      <div class="label"><span class="icon"><i class="fa-solid fa-envelope"></i></span> Email</div>
       <a href="mailto:zz10740@nyu.edu">zz10740@nyu.edu</a><br>
       <a href="mailto:gdeepolar@gmail.com">gdeepolar@gmail.com</a>
     </div>
 
     <div class="sidebar-item">
-      <div class="label"><span class="icon">🎓</span> Google Scholar</div>
+      <div class="label"><span class="icon"><i class="ai ai-google-scholar"></i></span> Google Scholar</div>
       <a href="https://scholar.google.com/citations?user=SXvRGHMAAAAJ">Zeshen Zhang</a>
     </div>
 
     <div class="sidebar-item">
-      <div class="label"><span class="icon">🐙</span> GitHub</div>
+      <div class="label"><span class="icon"><i class="fa-brands fa-github"></i></span> GitHub</div>
       <a href="https://github.com/Deepolar">Deepolar</a>
     </div>
 
     <div class="sidebar-item">
-      <div class="label"><span class="icon">in</span> LinkedIn</div>
+      <div class="label"><span class="icon"><i class="fa-brands fa-linkedin"></i></span> LinkedIn</div>
       <a href="https://www.linkedin.com/in/zeshen-zhang-1ba417259/">Zeshen&nbsp;Zhang</a>
     </div>
   </div>
@@ -120,41 +178,58 @@
     </p>
 
     <p>
-      I am currently advised by
-      <a href="https://mivenhan.github.io/">Assistant Professor Han Zhao</a> (Shanghai Jiao Tong University)
+      I have been fortunate to work with
+      <a href="https://mivenhan.github.io/">Prof. Han Zhao</a> (Shanghai Jiao Tong University)
       and
-      <a href="https://cs.shanghai.nyu.edu/faculty/yucheng-lu-luyucheng">Assistant Professor Yucheng Lu</a> (NYU Shanghai).
+      <a href="https://cs.shanghai.nyu.edu/faculty/yucheng-lu-luyucheng">Prof. Yucheng Lu</a> (NYU Shanghai).
     </p>
 
     <p>
-      🎯 I am actively preparing to apply for PhD programs in Fall 2027 and would be happy to connect regarding research collaboration or opportunities.
+      I am actively preparing to apply for PhD programs in Fall 2027 and would be happy to connect regarding research collaboration or opportunities.
     </p>
 
-    <h2>Publication</h2>
+    <h2>Publications</h2>
 
-    <p>
-      <b>Multi-Token Residual Prediction</b><br>
-      Yufeng Xu, Zishuo Bao, Qian Wang, <b>Zeshen Zhang</b>, Haoqi Zhang, Bowen Peng,
-      Ang Li, Rahul Chalamala, Yucheng Lu.<br>
-      <i>[2026] Conference on Neural Information Processing Systems (<b>NeurIPS 2026</b>)</i> |
-      <a href="https://arxiv.org/abs/2605.18817">arXiv</a> |
-      <a href="https://github.com/heavyball-research/multi-token-residual-prediction">Code</a> |
-      <a href="https://huggingface.co/collections/heavyball/sdar-mrp">Models</a>
-    </p>
+    <div class="pub">
+      <span class="venue-tag">NeurIPS 2026</span>
+      <div class="pub-body">
+        <p>
+          <b>Multi-Token Residual Prediction</b><br>
+          Yufeng Xu, Zishuo Bao, Qian Wang, <b>Zeshen Zhang</b>, Haoqi Zhang, Bowen Peng,
+          Ang Li, Rahul Chalamala, Yucheng Lu.<br>
+          <i>Conference on Neural Information Processing Systems (NeurIPS 2026)</i><br>
+          <a href="https://arxiv.org/abs/2605.18817">arXiv</a> |
+          <a href="https://github.com/heavyball-research/multi-token-residual-prediction">Code</a> |
+          <a href="https://huggingface.co/collections/heavyball/sdar-mrp">Models</a>
+        </p>
+      </div>
+    </div>
 
-    <p>
-      <b>LEGO: Supporting LLM-enhanced Games with One Gaming GPU</b><br>
-      Han Zhao^, Weihao Cui^, <b>Zeshen Zhang</b>, Wenhao Zhang, Jiangtong Li,
-      Quan Chen, Pu Pang, Zijun Li, Zhenhua Han, Yuqing Yang, Minyi Guo.<br>
-      <i>[2026] 32nd IEEE International Symposium on High-Performance Computer Architecture (<b>HPCA 2026</b>)</i> |
-      <a href="https://ieeexplore.ieee.org/document/11408477">Paper</a>
-    </p>
+    <div class="pub">
+      <span class="venue-tag">HPCA 2026</span>
+      <div class="pub-body">
+        <p>
+          <b>LEGO: Supporting LLM-enhanced Games with One Gaming GPU</b><br>
+          Han Zhao^, Weihao Cui^, <b>Zeshen Zhang</b>, Wenhao Zhang, Jiangtong Li,
+          Quan Chen, Pu Pang, Zijun Li, Zhenhua Han, Yuqing Yang, Minyi Guo.<br>
+          <i>32nd IEEE International Symposium on High-Performance Computer Architecture (HPCA 2026)</i><br>
+          <a href="https://ieeexplore.ieee.org/document/11408477">Paper</a>
+        </p>
+      </div>
+    </div>
 
-    <!-- <p>
-      <b>Multi-SLO Scheduling for LoRA-based LLM Inference Systems</b><br>
-      <b>Zeshen Zhang</b>, et al.<br>
-      <i>[2026] Under Review </i>
-    </p> -->
+    <!--
+    <div class="pub">
+      <span class="venue-tag">Under Review</span>
+      <div class="pub-body">
+        <p>
+          <b>Multi-SLO Scheduling for LoRA-based LLM Inference Systems</b><br>
+          <b>Zeshen Zhang</b>, et al.<br>
+          <i>Under Review</i>
+        </p>
+      </div>
+    </div>
+    -->
 
     <h2>Education</h2>
 
@@ -173,10 +248,7 @@
     <p>
       <b>CFGPT — Financial Domain LLM Platform</b><br>
       Open-source project for financial-domain LLM workflows and evaluation.<br>
-      Code:
-      <a href="https://github.com/TongjiFinLab/CFGPT">
-        https://github.com/TongjiFinLab/CFGPT
-      </a>
+      Code: <a href="https://github.com/TongjiFinLab/CFGPT">github.com/TongjiFinLab/CFGPT</a>
     </p>
 
   </div>
