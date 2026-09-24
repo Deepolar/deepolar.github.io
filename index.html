@@ -1,14 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Zeshen Zhang - NYU Tandon MSCS - Research Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Zeshen Zhang</title>
 
   <style>
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
       max-width: 900px;
       margin: 40px auto;
+      padding: 0 20px;
       line-height: 1.65;
       color: #222;
     }
@@ -21,6 +23,7 @@
 
     img.avatar {
       width: 230px;
+      max-width: 100%;
       border-radius: 16px;
       box-shadow: 0 8px 22px rgba(0,0,0,.08);
     }
@@ -29,26 +32,14 @@
     h2 { margin-top: 26px; }
 
     /* ---------- 链接颜色规则 ---------- */
-    .content a {
-      color: #1a73e8;
-    }
-    .content a:hover {
-      color: #174ea6;
-      text-decoration: underline;
-    }
+    .content a { color: #1a73e8; }
+    .content a:hover { color: #174ea6; text-decoration: underline; }
 
-    .sidebar a {
-      color: #333;
-      text-decoration: none;
-    }
-    .sidebar a:hover {
-      text-decoration: underline;
-    }
+    .sidebar a { color: #333; text-decoration: none; }
+    .sidebar a:hover { text-decoration: underline; }
 
     /* ---------- 左栏样式 ---------- */
-    .sidebar-item {
-      margin-top: 14px;
-    }
+    .sidebar-item { margin-top: 14px; }
 
     .label {
       font-weight: 600;
@@ -66,9 +57,14 @@
       font-size: 16px;
       line-height: 1;
     }
-    .muted {
-      color: #666;
-      font-size: 0.95em;
+
+    .muted { color: #666; font-size: 0.95em; }
+
+    /* ---------- 手机端：单栏 ---------- */
+    @media (max-width: 680px) {
+      body { margin: 24px auto; }
+      .container { grid-template-columns: 1fr; gap: 12px; }
+      img.avatar { width: 160px; }
     }
   </style>
 </head>
@@ -88,34 +84,24 @@
     </div>
 
     <div class="sidebar-item">
-      <div class="label">
-        <span class="icon">✉️</span> Email
-      </div>
+      <div class="label"><span class="icon">✉️</span> Email</div>
       <a href="mailto:zz10740@nyu.edu">zz10740@nyu.edu</a><br>
       <a href="mailto:gdeepolar@gmail.com">gdeepolar@gmail.com</a>
     </div>
 
     <div class="sidebar-item">
-      <div class="label">
-        <span class="icon">🎓</span> Google Scholar
-      </div>
+      <div class="label"><span class="icon">🎓</span> Google Scholar</div>
       <a href="https://scholar.google.com/citations?user=SXvRGHMAAAAJ">Zeshen Zhang</a>
     </div>
 
     <div class="sidebar-item">
-      <div class="label">
-        <span class="icon">🐙</span> GitHub
-      </div>
+      <div class="label"><span class="icon">🐙</span> GitHub</div>
       <a href="https://github.com/Deepolar">Deepolar</a>
     </div>
 
     <div class="sidebar-item">
-      <div class="label">
-        <span class="icon">in</span> LinkedIn
-      </div>
-      <a href="https://www.linkedin.com/in/zeshen-zhang-1ba417259/">
-        Zeshen&nbsp;Zhang
-      </a>
+      <div class="label"><span class="icon">in</span> LinkedIn</div>
+      <a href="https://www.linkedin.com/in/zeshen-zhang-1ba417259/">Zeshen&nbsp;Zhang</a>
     </div>
   </div>
 
@@ -127,17 +113,17 @@
     <h2>About Me</h2>
 
     <p>
-      I am a Master's student in Computer Science (M.S.) at the NYU Tandon School of Engineering.
-      I received my B.S. in Computer Science and Technology from Tongji University in 2025.
-      My research interests lie in <b>Diffusion-based Large Language Models</b> and <b>LLM Inference Systems and GPU Scheduling</b>.
+      I am a Master's student in Computer Science (M.S.) at the NYU Tandon School of Engineering,
+      expected to graduate in 2026. I received my B.S. in Computer Science and Technology
+      from Tongji University in 2025.
+      My research interests lie in <b>Machine Learning Systems</b>.
     </p>
 
     <p>
       I am currently advised by
-      <a href="https://mivenhan.github.io/">Assistant Professor Han Zhao</a>
+      <a href="https://mivenhan.github.io/">Assistant Professor Han Zhao</a> (Shanghai Jiao Tong University)
       and
-      <a href="https://cs.shanghai.nyu.edu/faculty/yucheng-lu-luyucheng">Assistant Professor Yucheng Lu</a>,
-      working on topics related to Diffusion-based Large Language Models and ML Systems.
+      <a href="https://cs.shanghai.nyu.edu/faculty/yucheng-lu-luyucheng">Assistant Professor Yucheng Lu</a> (NYU Shanghai).
     </p>
 
     <p>
@@ -150,8 +136,10 @@
       <b>Multi-Token Residual Prediction</b><br>
       Yufeng Xu, Zishuo Bao, Qian Wang, <b>Zeshen Zhang</b>, Haoqi Zhang, Bowen Peng,
       Ang Li, Rahul Chalamala, Yucheng Lu.<br>
-      <i>[2026] Under Review</i> |
-      <a href="https://arxiv.org/abs/2605.18817">arXiv</a>
+      <i>[2026] Conference on Neural Information Processing Systems (<b>NeurIPS 2026</b>)</i> |
+      <a href="https://arxiv.org/abs/2605.18817">arXiv</a> |
+      <a href="https://github.com/heavyball-research/multi-token-residual-prediction">Code</a> |
+      <a href="https://huggingface.co/collections/heavyball/sdar-mrp">Models</a>
     </p>
 
     <p>
@@ -167,7 +155,19 @@
       <b>Zeshen Zhang</b>, et al.<br>
       <i>[2026] Under Review </i>
     </p> -->
-    
+
+    <h2>Education</h2>
+
+    <p>
+      <b>New York University, Tandon School of Engineering</b><br>
+      M.S. in Computer Science, expected 2026
+    </p>
+
+    <p>
+      <b>Tongji University</b><br>
+      B.S. in Computer Science and Technology, 2025
+    </p>
+
     <h2>Projects</h2>
 
     <p>
