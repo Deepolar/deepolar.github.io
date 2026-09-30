@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Zeshen Zhang</title>
 
-  <!-- 字体：Source Serif 4 -->
+  <!-- Font: Source Serif 4 -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet">
 
-  <!-- 图标：Font Awesome + Academicons -->
+  <!-- Icons: Font Awesome + Academicons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
 
@@ -38,7 +38,7 @@
       box-shadow: 0 8px 22px rgba(0,0,0,.08);
     }
 
-    /* ---------- 标题层级 ---------- */
+    /* ---------- Heading hierarchy ---------- */
     h1 {
       font-size: 2em;
       font-weight: 700;
@@ -52,7 +52,7 @@
       border-bottom: 1px solid #e3e3e3;
     }
 
-    /* ---------- 链接颜色规则 ---------- */
+    /* ---------- Link colors ---------- */
     .content a { color: #1a73e8; text-decoration: none; }
     .content a:hover { color: #174ea6; text-decoration: underline; }
 
@@ -61,7 +61,7 @@
 
     a:focus-visible { outline: 2px solid #1a73e8; outline-offset: 2px; }
 
-    /* ---------- 左栏样式 ---------- */
+    /* ---------- Sidebar ---------- */
     .sidebar-item { margin-top: 14px; }
 
     .label {
@@ -89,7 +89,7 @@
       font-size: 0.95em;
     }
 
-    /* ---------- 论文条目 ---------- */
+    /* ---------- Publication entries ---------- */
     .pub {
       display: flex;
       gap: 14px;
@@ -109,9 +109,15 @@
       text-align: center;
       white-space: nowrap;
     }
+    /* Lighter tag for non-peer-reviewed work (blog / preprint) */
+    .venue-tag.preprint {
+      background: #e8edf3;
+      color: #1f3a5f;
+    }
     .pub-body p { margin: 0; }
+    .pub-note { color: #555; font-size: 0.94em; }
 
-    /* ---------- 手机端：单栏 ---------- */
+    /* ---------- Mobile: single column ---------- */
     @media (max-width: 680px) {
       body { margin: 24px auto; font-size: 16px; }
       .container { grid-template-columns: 1fr; gap: 12px; }
@@ -134,7 +140,7 @@
       <div class="meta-line"><span class="icon"><i class="fa-solid fa-graduation-cap"></i></span> NYU Tandon School of Engineering</div>
     </div>
 
-    <!-- CV 准备好后取消注释
+    <!-- Uncomment once the CV is ready
     <div class="sidebar-item">
       <div class="label"><span class="icon"><i class="ai ai-cv"></i></span> CV</div>
       <a href="cv.pdf">CV (PDF)</a>
@@ -214,6 +220,22 @@
           Quan Chen, Pu Pang, Zijun Li, Zhenhua Han, Yuqing Yang, Minyi Guo.<br>
           <i>32nd IEEE International Symposium on High-Performance Computer Architecture (HPCA 2026)</i><br>
           <a href="https://ieeexplore.ieee.org/document/11408477">Paper</a>
+        </p>
+      </div>
+    </div>
+
+    <div class="pub">
+      <span class="venue-tag preprint">Blog 2026</span>
+      <div class="pub-body">
+        <p>
+          <b>Flywheel Attention: Attention Kernels Built for the TPU</b><br>
+          Zishuo Bao, <b>Zeshen Zhang</b>, Yucheng Lu.<br>
+          <i>HeavyBall Research Blog, Sep 2026. Full paper in preparation.</i><br>
+          <span class="pub-note">TPU-native softmax attention and Gated DeltaNet kernels, reaching 744 TFLOP/s
+          (81% of BF16 peak) on TPU v6e, up to 1.56&times; faster than Splash Attention and 3.61&times; faster
+          GDN prefill than vLLM's production kernel.</span><br>
+          <a href="https://heavyball-research.github.io/blog/2026-09-29-attention-tpu/">Blog</a> |
+          <a href="https://github.com/heavyball-research/flywheel-tpu">Code</a>
         </p>
       </div>
     </div>
