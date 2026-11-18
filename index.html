@@ -1,272 +1,164 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="Zeshen Zhang">
   <title>Zeshen Zhang</title>
 
-  <!-- Font: Source Serif 4 -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet">
-
-  <!-- Icons: Font Awesome + Academicons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 
   <style>
     body {
-      font-family: "Source Serif 4", Georgia, "Times New Roman", serif;
-      font-size: 17px;
-      max-width: 1080px;
-      margin: 40px auto;
-      padding: 0 20px;
-      line-height: 1.7;
+      font-family: "Lato", Verdana, Helvetica, sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
       color: #222;
+      background: #fff;
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 48px 20px 32px;
     }
 
-    .container {
-      display: grid;
-      grid-template-columns: 260px 1fr;
-      gap: 36px;
+    a { color: #1772d0; text-decoration: none; }
+    a:hover, a:focus { color: #f09228; }
+
+    /* ---------- Header: bio left, photo right ---------- */
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+    }
+    .bio { flex: 1; }
+    .name {
+      font-size: 32px;
+      font-weight: 400;
+      text-align: center;
+      margin: 0 0 12px;
+    }
+    .bio p { margin: 0 0 12px; }
+    .links { text-align: center; }
+    .photo {
+      flex: 0 0 220px;
+    }
+    .photo img {
+      width: 220px;
+      height: 220px;
+      object-fit: cover;
+      object-position: 50% 15%;
+      border-radius: 50%;
     }
 
-    img.avatar {
-      width: 260px;
-      max-width: 100%;
-      border-radius: 16px;
-      box-shadow: 0 8px 22px rgba(0,0,0,.08);
-    }
-
-    /* ---------- Heading hierarchy ---------- */
-    h1 {
-      font-size: 2em;
-      font-weight: 700;
-      margin: 0 0 6px;
-    }
+    /* ---------- Sections ---------- */
     h2 {
-      font-size: 1.25em;
-      font-weight: 600;
-      margin: 30px 0 12px;
-      padding-bottom: 4px;
-      border-bottom: 1px solid #e3e3e3;
+      font-size: 22px;
+      font-weight: 400;
+      margin: 36px 0 8px;
     }
 
-    /* ---------- Link colors ---------- */
-    .content a { color: #1a73e8; text-decoration: none; }
-    .content a:hover { color: #174ea6; text-decoration: underline; }
+    .pub { margin: 0 0 18px; }
+    .pub-title { font-weight: 700; }
+    .pub-venue { font-style: italic; }
+    .pub-note { color: #555; }
 
-    .sidebar a { color: #333; text-decoration: none; }
-    .sidebar a:hover { text-decoration: underline; }
+    .edu { margin: 0 0 10px; }
 
-    a:focus-visible { outline: 2px solid #1a73e8; outline-offset: 2px; }
-
-    /* ---------- Sidebar ---------- */
-    .sidebar-item { margin-top: 14px; }
-
-    .label {
-      font-weight: 600;
-      color: #444;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 2px;
-    }
-
-    .icon {
-      width: 18px;
-      text-align: center;
-      color: #555;
-      font-size: 16px;
-      line-height: 1;
-    }
-
-    .meta-line {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      color: #666;
-      font-size: 0.95em;
-    }
-
-    /* ---------- Publication entries ---------- */
-    .pub {
-      display: flex;
-      gap: 14px;
-      align-items: flex-start;
-      margin-bottom: 18px;
-    }
-    .venue-tag {
-      flex: 0 0 auto;
-      min-width: 96px;
-      margin-top: 3px;
-      padding: 2px 8px;
-      border-radius: 4px;
-      background: #1f3a5f;
-      color: #fff;
-      font-size: 0.78em;
-      font-weight: 600;
-      text-align: center;
-      white-space: nowrap;
-    }
-    /* Lighter tag for non-peer-reviewed work (blog / preprint) */
-    .venue-tag.preprint {
-      background: #e8edf3;
-      color: #1f3a5f;
-    }
-    .pub-body p { margin: 0; }
-    .pub-note { color: #555; font-size: 0.94em; }
-
-    /* ---------- Mobile: single column ---------- */
-    @media (max-width: 680px) {
-      body { margin: 24px auto; font-size: 16px; }
-      .container { grid-template-columns: 1fr; gap: 12px; }
-      img.avatar { width: 160px; }
-      .pub { flex-direction: column; gap: 6px; }
-      .venue-tag { min-width: 0; }
+    /* ---------- Mobile: stack ---------- */
+    @media (max-width: 640px) {
+      body { padding-top: 28px; }
+      .header { flex-direction: column-reverse; gap: 16px; }
+      .photo { flex-basis: auto; }
+      .photo img { width: 160px; height: 160px; }
     }
   </style>
 </head>
 
 <body>
 
-<div class="container">
+  <div class="header">
+    <div class="bio">
+      <p class="name">Zeshen Zhang</p>
 
-  <div class="sidebar">
-    <img src="avatar.jpg" class="avatar" alt="Zeshen Zhang">
+      <p>
+        I am an M.S. student in Computer Science at the
+        <a href="https://engineering.nyu.edu/">NYU Tandon School of Engineering</a>,
+        expected to graduate in January 2027. I received my B.S. in Computer Science and Technology
+        from Tongji University in 2025. I work on <b>machine learning systems</b>.
+      </p>
 
-    <div class="sidebar-item">
-      <div class="meta-line"><span class="icon"><i class="fa-solid fa-location-dot"></i></span> New York, USA</div>
-      <div class="meta-line"><span class="icon"><i class="fa-solid fa-graduation-cap"></i></span> NYU Tandon School of Engineering</div>
+      <p>
+        I have been fortunate to work with
+        <a href="https://mivenhan.github.io/">Prof. Han Zhao</a> (Shanghai Jiao Tong University)
+        and
+        <a href="https://cs.shanghai.nyu.edu/faculty/yucheng-lu-luyucheng">Prof. Yucheng Lu</a> (NYU Shanghai).
+      </p>
+
+      <p><b>I am applying to PhD programs for Fall 2027.</b></p>
+
+      <p class="links">
+        <a href="mailto:zz10740@nyu.edu">Email</a> &nbsp;/&nbsp;
+        <a href="https://scholar.google.com/citations?user=SXvRGHMAAAAJ">Google Scholar</a> &nbsp;/&nbsp;
+        <a href="https://github.com/Deepolar">GitHub</a> &nbsp;/&nbsp;
+        <a href="https://www.linkedin.com/in/zeshen-zhang-1ba417259/">LinkedIn</a>
+      </p>
     </div>
 
-    <!-- Uncomment once the CV is ready
-    <div class="sidebar-item">
-      <div class="label"><span class="icon"><i class="ai ai-cv"></i></span> CV</div>
-      <a href="cv.pdf">CV (PDF)</a>
-    </div>
-    -->
-
-    <div class="sidebar-item">
-      <div class="label"><span class="icon"><i class="fa-solid fa-envelope"></i></span> Email</div>
-      <a href="mailto:zz10740@nyu.edu">zz10740@nyu.edu</a><br>
-      <a href="mailto:gdeepolar@gmail.com">gdeepolar@gmail.com</a>
-    </div>
-
-    <div class="sidebar-item">
-      <div class="label"><span class="icon"><i class="ai ai-google-scholar"></i></span> Google Scholar</div>
-      <a href="https://scholar.google.com/citations?user=SXvRGHMAAAAJ">Zeshen Zhang</a>
-    </div>
-
-    <div class="sidebar-item">
-      <div class="label"><span class="icon"><i class="fa-brands fa-github"></i></span> GitHub</div>
-      <a href="https://github.com/Deepolar">Deepolar</a>
-    </div>
-
-    <div class="sidebar-item">
-      <div class="label"><span class="icon"><i class="fa-brands fa-linkedin"></i></span> LinkedIn</div>
-      <a href="https://www.linkedin.com/in/zeshen-zhang-1ba417259/">Zeshen&nbsp;Zhang</a>
+    <div class="photo">
+      <img src="avatar.jpg" alt="Zeshen Zhang">
     </div>
   </div>
 
+  <h2>Publications &amp; Preprints</h2>
 
-  <div class="content">
-
-    <h1>Zeshen Zhang</h1>
-
-    <h2>About Me</h2>
-
-    <p>
-      I am a Master's student in Computer Science (M.S.) at the NYU Tandon School of Engineering,
-      expected to graduate in January 2027. I received my B.S. in Computer Science and Technology
-      from Tongji University in 2025.
-      My research interests lie in <b>Machine Learning Systems</b>.
-    </p>
-
-    <p>
-      I have been fortunate to work with
-      <a href="https://mivenhan.github.io/">Prof. Han Zhao</a> (Shanghai Jiao Tong University)
-      and
-      <a href="https://cs.shanghai.nyu.edu/faculty/yucheng-lu-luyucheng">Prof. Yucheng Lu</a> (NYU Shanghai).
-    </p>
-
-    <p>
-      I am actively preparing to apply for PhD programs in Fall 2027 and would be happy to connect regarding research collaboration or opportunities.
-    </p>
-
-    <h2>Publications &amp; Preprints</h2>
-
-    <div class="pub">
-      <span class="venue-tag">TACO (Minor Rev.)</span>
-      <div class="pub-body">
-        <p>
-          <b>From Overloaded to Guaranteed: High-Throughput Multi-SLO Enforcement for LoRA-Assisted On-Premise LLM Deployment</b><br>
-          <b>Zeshen Zhang</b>, Han Zhao, Weihao Cui, Quan Chen, Yu Liu, Yongjun Deng, Jing Yang,
-          Jiuchen Shi, Chen Chen, Youmin Chen, Yu Feng, Minyi Guo.<br>
-          <i>ACM Transactions on Architecture and Code Optimization (TACO)</i><br>
-          <a href="https://arxiv.org/abs/2610.04956">arXiv</a>
-        </p>
-      </div>
-    </div>
-
-    <div class="pub">
-      <span class="venue-tag preprint">arXiv 2026</span>
-      <div class="pub-body">
-        <p>
-          <b>FlyWheel: Attention Kernels Built for the TPU</b><br>
-          Zishuo Bao, <b>Zeshen Zhang</b>, Linkun Chen, Yucheng Lu.<br>
-          <i>arXiv preprint, Nov 2026</i><br>
-          <span class="pub-note">TPU kernels for softmax attention and Gated DeltaNet on TPU v6e and v7x, reaching 81% of BF16 peak
-          on v6e, up to 1.80&times; faster than Splash Attention and 3.61&times; faster GDN prefill.</span><br>
-          <a href="https://arxiv.org/abs/2611.01426">arXiv</a> |
-          <a href="https://heavyball-research.github.io/blog/2026-09-29-attention-tpu/">Blog</a> |
-          <a href="https://github.com/heavyball-research/flywheel-tpu">Code</a>
-        </p>
-      </div>
-    </div>
-
-    <div class="pub">
-      <span class="venue-tag">NeurIPS 2026</span>
-      <div class="pub-body">
-        <p>
-          <b>Multi-Token Residual Prediction</b><br>
-          Yufeng Xu, Zishuo Bao, Qian Wang, <b>Zeshen Zhang</b>, Haoqi Zhang, Bowen Peng,
-          Ang Li, Rahul Chalamala, Yucheng Lu.<br>
-          <i>Conference on Neural Information Processing Systems (NeurIPS 2026)</i><br>
-          <a href="https://arxiv.org/abs/2605.18817">arXiv</a> |
-          <a href="https://github.com/heavyball-research/multi-token-residual-prediction">Code</a> |
-          <a href="https://huggingface.co/collections/heavyball/sdar-mrp">Models</a>
-        </p>
-      </div>
-    </div>
-
-    <div class="pub">
-      <span class="venue-tag">HPCA 2026</span>
-      <div class="pub-body">
-        <p>
-          <b>LEGO: Supporting LLM-enhanced Games with One Gaming GPU</b><br>
-          Han Zhao^, Weihao Cui^, <b>Zeshen Zhang</b>, Wenhao Zhang, Jiangtong Li,
-          Quan Chen, Pu Pang, Zijun Li, Zhenhua Han, Yuqing Yang, Minyi Guo.<br>
-          <i>32nd IEEE International Symposium on High-Performance Computer Architecture (HPCA 2026)</i><br>
-          <a href="https://ieeexplore.ieee.org/document/11408477">Paper</a>
-        </p>
-      </div>
-    </div>
-
-    <h2>Education</h2>
-
-    <p>
-      <b>New York University, Tandon School of Engineering</b><br>
-      M.S. in Computer Science, expected 2026
-    </p>
-
-    <p>
-      <b>Tongji University</b><br>
-      B.S. in Computer Science and Technology, 2025
-    </p>
-
+  <div class="pub">
+    <span class="pub-title">From Overloaded to Guaranteed: High-Throughput Multi-SLO Enforcement for LoRA-Assisted On-Premise LLM Deployment</span><br>
+    <b>Zeshen Zhang</b>, Han Zhao, Weihao Cui, Quan Chen, Yu Liu, Yongjun Deng, Jing Yang,
+    Jiuchen Shi, Chen Chen, Youmin Chen, Yu Feng, Minyi Guo<br>
+    <span class="pub-venue">ACM Transactions on Architecture and Code Optimization (TACO)</span>, minor revision<br>
+    <a href="https://arxiv.org/abs/2610.04956">arXiv</a>
   </div>
-</div>
+
+  <div class="pub">
+    <span class="pub-title">FlyWheel: Attention Kernels Built for the TPU</span><br>
+    Zishuo Bao, <b>Zeshen Zhang</b>, Linkun Chen, Yucheng Lu<br>
+    <span class="pub-venue">arXiv preprint</span>, 2026<br>
+    <a href="https://arxiv.org/abs/2611.01426">arXiv</a> /
+    <a href="https://heavyball-research.github.io/blog/2026-09-29-attention-tpu/">blog</a> /
+    <a href="https://github.com/heavyball-research/flywheel-tpu">code</a>
+    <div class="pub-note">
+      TPU kernels for softmax attention and Gated DeltaNet on TPU v6e and v7x, reaching 81% of BF16 peak
+      on v6e, up to 1.80&times; faster than Splash Attention and 3.61&times; faster GDN prefill.
+    </div>
+  </div>
+
+  <div class="pub">
+    <span class="pub-title">Multi-Token Residual Prediction</span><br>
+    Yufeng Xu, Zishuo Bao, Qian Wang, <b>Zeshen Zhang</b>, Haoqi Zhang, Bowen Peng,
+    Ang Li, Rahul Chalamala, Yucheng Lu<br>
+    <span class="pub-venue">NeurIPS</span>, 2026<br>
+    <a href="https://arxiv.org/abs/2605.18817">arXiv</a> /
+    <a href="https://github.com/heavyball-research/multi-token-residual-prediction">code</a> /
+    <a href="https://huggingface.co/collections/heavyball/sdar-mrp">models</a>
+  </div>
+
+  <div class="pub">
+    <span class="pub-title">LEGO: Supporting LLM-enhanced Games with One Gaming GPU</span><br>
+    Han Zhao^, Weihao Cui^, <b>Zeshen Zhang</b>, Wenhao Zhang, Jiangtong Li,
+    Quan Chen, Pu Pang, Zijun Li, Zhenhua Han, Yuqing Yang, Minyi Guo<br>
+    <span class="pub-venue">HPCA</span>, 2026<br>
+    <a href="https://ieeexplore.ieee.org/document/11408477">paper</a>
+  </div>
+
+  <h2>Education</h2>
+
+  <p class="edu">
+    <b>New York University, Tandon School of Engineering</b>, M.S. in Computer Science, expected Jan. 2027
+  </p>
+  <p class="edu">
+    <b>Tongji University</b>, B.S. in Computer Science and Technology, 2025
+  </p>
 
 </body>
 </html>
